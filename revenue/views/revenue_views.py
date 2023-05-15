@@ -2,8 +2,8 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from category.models import Revenue
-from category.serializers import RevenueSerializer
+from revenue.models import Revenue
+from revenue.serializers import RevenueSerializer
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
