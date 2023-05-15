@@ -50,9 +50,9 @@ INSTALLED_APPS = [
     'storages',
     
     # apps
-    'user',
-    'category',
-    'revenue',
+    'user.apps.UserConfig',
+    'category.apps.CategoryConfig',
+    'revenue.apps.RevenueConfig',
 ]
 
 
