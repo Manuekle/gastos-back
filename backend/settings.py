@@ -48,8 +48,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'storages',
-
-    'base.apps.BaseConfig',
+    
+    # apps
+    'user',
+    'category',
+    'revenue',
 ]
 
 
