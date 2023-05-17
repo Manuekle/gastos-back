@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class Categories(models.Model):
 
     categories = (
@@ -16,7 +17,7 @@ class Categories(models.Model):
         ('vivienda', 'Vivienda'),
         ('otros', 'Otros'),
     )
-    
+
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(
         max_length=200, choices=categories, blank=True)
@@ -27,3 +28,10 @@ class Categories(models.Model):
 
     def __str__(self):
         return self.name
+
+"""
+cuando se agrege el monto de categoria se debe restar del monto total de ingresos
+ejemplo:
+tiene 10000 en ingresos y 5000 en categoria de servicios publicos
+el monto total de ingresos debe ser 5000       
+"""

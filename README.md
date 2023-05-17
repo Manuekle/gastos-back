@@ -2,10 +2,10 @@
 
 ## Descripción 📋
 
-La aplicación de gastos consiste en poder llevar el control de las cuentas de cada mes, donde contará con un registro si hace uso de  esta por primera vez, si  es usuario de la página le dará el acceso con su correo y contraseña (inicio de sesión).
-Al loguearse podrá  mirar su monto de cada mes y si no lo ha hecho podrá hacer el debido proceso para colocar el valor de sus ingresos mensualmente para que  con el valor ingresado pueda mirar y llevar el registro  de sus ingresos y egresos.
+La aplicación de gastos consiste en poder llevar el control de las cuentas de cada mes, donde contará con un registro si hace uso de esta por primera vez, si es usuario de la página le dará el acceso con su correo y contraseña (inicio de sesión).
+Al loguearse podrá mirar su monto de cada mes y si no lo ha hecho podrá hacer el debido proceso para colocar el valor de sus ingresos mensualmente para que con el valor ingresado pueda mirar y llevar el registro de sus ingresos y egresos.
 
-ya al haber puesto el monto de su ingreso que va a consumir en el mes podrás mirar o observar que le dará opciones donde podrá ir colocando en que se gastando  durante el mes, tendrá un apartado donde puede colocar en que  se ha gastado si en ropa, mercado u otras cosas, más el monto de lo que gastaste.
+ya al haber puesto el monto de su ingreso que va a consumir en el mes podrás mirar o observar que le dará opciones donde podrá ir colocando en que se gastando durante el mes, tendrá un apartado donde puede colocar en que se ha gastado si en ropa, mercado u otras cosas, más el monto de lo que gastaste.
 Al finalizar el mes este tendrá un apartado donde le dará un balance de los gastos que hicieron o comúnmente se dice un reporte mensual.
 
 ## Tabla de Contenido 📄
@@ -21,6 +21,7 @@ Al finalizar el mes este tendrá un apartado donde le dará un balance de los ga
 ## Arquitectura 🛠️
 
 ### Diseño de la Arquitectura ✒️
+
 <!-- img -->
 <img src="source/Architecture.png" alt="architecture" width="500" style="border-radius: 8px;"/>
 
@@ -45,9 +46,10 @@ Al finalizar el mes este tendrá un apartado donde le dará un balance de los ga
 ### Requisitos del proyecto 🪛
 
 - Python 3.10
-- XAMPP(para pruebas locales)
+- XAMPP(para pruebas locales con MySQL)
+- pgAdmin(para pruebas locales con PostgreSQL)
+- MongoDB(para pruebas locales con MongoDB)
 - Postman(para pruebas locales de la API)
-- PostgreSQL
 - AWS (para despliegue en la nube)
 - Node.js
 
@@ -90,22 +92,31 @@ $ python manage.py runserver
 
 ```bash
 # Variables de entorno
+
 # Para PostgreSQL
 DB_ENGINE=django.db.backends.postgresql_psycopg2
+DB_PORT=5432
+
 # Para MySQL
 DB_ENGINE=django.db.backends.mysql
+DB_PORT=3306
+
 DB_NAME=name_database
 DB_USER=user_database
 DB_PASSWORD=password_database
+
 # localhost
 DB_HOST=localhost
-# o la ip local
-DB_HOST=127.0.0.1
-# MySQL PORT
-DB_PORT=3306
-# PostgreSQL PORT
-DB_PORT=5432
 
+# si no funciona localhost probar con:
+DB_HOST=127.0.0.1
+
+# Para MongoDB
+DB_ENGINE=djongo
+DB_HOST=localhost
+DB_PORT=27017
+
+# AWS settings (solo si se tiene cuenta en AWS)
 AWS_ACCESS_KEY_ID=your_access_key_id
 AWS_SECRET_ACCESS_KEY =your_secret_access_key
 AWS_STORAGE_BUCKET_NAME =your_bucket_name
@@ -114,7 +125,7 @@ AWS_STORAGE_BUCKET_NAME =your_bucket_name
 ```python
 # settings.py
 
-# Base de datos
+# Base de datos PostgreSQL o MySQL
 DATABASES = {
     'default': {
         'ENGINE': env('DB_ENGINE'),
@@ -122,11 +133,23 @@ DATABASES = {
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
         'HOST': env('DB_HOST'),
-        'PORT': '5432'
+        'PORT': env('DB_PORT')
     }
 }
 
-# AWS settings
+# Base de datos MongoDB
+DATABASES = {
+    'default': {
+        'ENGINE': env('DB_ENGINE'),
+        'NAME': env('DB_NAME'),
+        'CLIENT': {
+            'host': env('DB_HOST'),
+            'port': env('DB_PORT'),
+        }
+     }
+}
+
+# AWS settings (solo si se tiene cuenta en AWS)
 AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
@@ -159,6 +182,8 @@ MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/images/'
 En este proyecto se usaron las siguientes tecnologias:
 
 - [PostgreSQL](https://www.postgresql.org/): Sistema de gestión de base de datos relacional.
+- [MySQL](https://www.mysql.com/): Sistema de gestión de base de datos relacional.
+- [MongoDB](https://www.mongodb.com/): Sistema de gestión de base de datos NoSQL.
 - [Python](https://www.python.org/): Version 3.10.7
 - [React](https://reactjs.org/): Version 18.2.0
 - [Django](https://www.djangoproject.com/): Version 4.1.0
@@ -170,7 +195,7 @@ En este proyecto se usaron las siguientes tecnologias:
 ```bash
 # Materia: Creditos Libres II
 $ Manuel Esteban Erazo
-$ Lina Marcela Lizcano 
+$ Lina Marcela Lizcano
 $ Deybison Stiven Perez Bojorge
 ```
 
@@ -178,4 +203,4 @@ $ Deybison Stiven Perez Bojorge
 
 Este proyecto está bajo la Licencia (MIT) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
-***
+---
