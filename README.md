@@ -14,9 +14,10 @@ Al finalizar el mes este tendrá un apartado donde le dará un balance de los ga
 2. [Instalación](#installation)
 3. [Modo de Uso](#usage)
 4. [Base de Datos](#database)
-5. [Tecnlogias](#technologies)
-6. [Autores](#authors)
-7. [Licencia](#license)
+5. [API](#api)
+6. [Tecnlogias](#technologies)
+7. [Autores](#authors)
+8. [Licencia](#license)
 
 ## Arquitectura 🛠️
 
@@ -175,7 +176,29 @@ STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/images/'
 ```
 
-## Base de Datos 💽
+## API 🚀
+
+### Endpoints 📋
+
+| Endpoint | Método | Descripción |
+| --- | --- | --- |
+| /admin/ | GET | Muestra el panel de administración de Django |
+| /api/ | GET | Muestra la información de la API |
+| /api/user/ | GET | Muestra todos los usuarios |
+| /api/user/ | POST | Crea un nuevo usuario |
+| /api/user/:id | GET | Muestra un usuario por su id |
+| /api/user/:id | PUT | Actualiza un usuario por su id |
+| /api/user/:id | DELETE | Elimina un usuario por su id |
+| /api/revenue/ | GET | Muestra todos los gastos |
+| /api/revenue/ | POST | Crea un nuevo gasto |
+| /api/revenue/:id | GET | Muestra un gasto por su id |
+| /api/revenue/:id | PUT | Actualiza un gasto por su id |
+| /api/revenue/:id | DELETE | Elimina un gasto por su id |
+| /api/category/ | GET | Muestra todas las categorias |
+| /api/category/ | POST | Crea una nueva categoria |
+| /api/category/:id | GET | Muestra una categoria por su id |
+| /api/category/:id | PUT | Actualiza una categoria por su id |
+| /api/category/:id | DELETE | Elimina una categoria por su id |
 
 ## Tecnlogias 🧰
 
