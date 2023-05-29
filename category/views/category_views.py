@@ -5,6 +5,11 @@ from rest_framework.response import Response
 from category.models import Categories
 from category.serializers import CategorySerializer
 
+
+"""
+    Vista de categorias
+    - addCategory: añade una categoria
+"""
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def addCategory(request):
@@ -18,6 +23,10 @@ def addCategory(request):
     serializer = CategorySerializer(category, many=False)
     return Response(serializer.data)
 
+"""
+    Vista de categorias
+    - getCategories: obtiene todas las categorias de un usuario
+"""
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getCategories(request):
@@ -26,6 +35,11 @@ def getCategories(request):
     serializer = CategorySerializer(categories, many=True)
     return Response(serializer.data)
 
+
+"""
+    Vista de categorias
+    - getCategoryById: obtiene una categoria por id
+"""
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getCategoryById(request, pk):
@@ -34,7 +48,10 @@ def getCategoryById(request, pk):
     serializer = CategorySerializer(category, many=False)
     return Response(serializer.data)
 
-
+"""
+    Vista de categorias
+    - updateCategory: actualiza una categoria por id
+"""
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateCategory(request, pk):
@@ -47,7 +64,10 @@ def updateCategory(request, pk):
     serializer = CategorySerializer(category, many=False)
     return Response(serializer.data)
 
-
+"""
+    Vista de categorias
+    - deleteCategory: elimina una categoria por id
+"""
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def deleteCategory(request, pk):

@@ -1,8 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
-
+"""
+    Modelo de categorias
+    - user: usuario que ha creado la categoria
+    - name: nombre de la categoria
+    - price: precio de la categoria
+    - createdAt: fecha de creación
+    - id: id de la categoria
+"""
 
 class Categories(models.Model):
 
@@ -30,8 +36,9 @@ class Categories(models.Model):
         return self.name
 
 """
-cuando se agrege el monto de categoria se debe restar del monto total de ingresos
-ejemplo:
-tiene 10000 en ingresos y 5000 en categoria de servicios publicos
-el monto total de ingresos debe ser 5000       
+    cuando se agrege el monto de categoria se debe restar del monto total de ingresos
+    ejemplo:
+
+    Tiene 10000 en ingresos y 5000 en categoria de servicios publicos
+    el monto total de ingresos debe ser 5000       
 """

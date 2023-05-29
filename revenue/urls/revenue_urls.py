@@ -1,6 +1,10 @@
 from django.urls import path
 from revenue.views import revenue_views as views
 
+"""
+    Se crean las rutas de la aplicación de ingresos
+"""
+
 urlpatterns = [
     path('', views.getRevenues, name="revenues"),
     path('add/', views.addRevenue, name="revenue-add"),

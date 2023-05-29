@@ -5,6 +5,11 @@ from rest_framework.response import Response
 from revenue.models import Revenue
 from revenue.serializers import RevenueSerializer
 
+"""
+    Vista de ingresos
+    - addRevenue: añade un ingreso
+"""
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def addRevenue(request):
@@ -18,6 +23,12 @@ def addRevenue(request):
     serializer = RevenueSerializer(revenue, many=False)
     return Response(serializer.data)
 
+
+"""
+    Vista de ingresos
+    - getRevenues: obtiene todos los ingresos de un usuario
+"""
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getRevenues(request):
@@ -26,6 +37,11 @@ def getRevenues(request):
     serializer = RevenueSerializer(revenues, many=True)
     return Response(serializer.data)
 
+
+"""
+    Vista de ingresos
+    - getRevenueById: obtiene un ingreso por id
+"""
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getRevenueById(request, pk):
@@ -34,6 +50,11 @@ def getRevenueById(request, pk):
     serializer = RevenueSerializer(revenue, many=False)
     return Response(serializer.data)
 
+
+"""
+    Vista de ingresos
+    - updateRevenue: actualiza un ingreso por id
+"""
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateRevenue(request, pk):
@@ -46,6 +67,11 @@ def updateRevenue(request, pk):
     serializer = RevenueSerializer(revenue, many=False)
     return Response(serializer.data)
 
+
+"""
+    Vista de ingresos
+    - deleteRevenue: elimina un ingreso por id
+"""
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def deleteRevenue(request, pk):
@@ -53,4 +79,3 @@ def deleteRevenue(request, pk):
     revenueForDeletion = Revenue.objects.get(_id=pk, user=user)
     revenueForDeletion.delete()
     return Response('Revenue was deleted')
-

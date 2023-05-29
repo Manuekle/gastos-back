@@ -1,6 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
+
+"""
+    Modelo de ingresos
+    - user: usuario que ha creado el ingreso
+    - name: nombre del ingreso
+    - price: precio del ingreso
+    - createdAt: fecha de creación
+    - id: id del ingreso
+"""
 
 class Revenue(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

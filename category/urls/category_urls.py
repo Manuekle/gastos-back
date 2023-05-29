@@ -1,6 +1,10 @@
 from django.urls import path
 from category.views import category_views as views
 
+"""
+    Se crean las rutas de la aplicación de categorias
+"""
+
 urlpatterns = [
     path('', views.getCategories, name="categories"),
     path('add/', views.addCategory, name="category-add"),

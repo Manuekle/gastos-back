@@ -12,7 +12,11 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth.hashers import make_password
 from rest_framework import status
 
-
+"""
+    Token de usuario
+    - MyTokenObtainPairSerializer: obtiene el token de usuario
+    - MyTokenObtainPairView: obtiene el token de usuario
+"""
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
@@ -27,6 +31,17 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
+"""
+    Vista de usuarios
+    - registerUser: registra un usuario
+    - updateUser: actualiza un usuario por id
+    - getUser: obtiene un usuario por id
+    - getUsers: obtiene todos los usuarios
+    - getUserById: obtiene un usuario por id
+    - updateUser: actualiza un usuario por id
+    - deleteUser: elimina un usuario por id
+    
+"""
 
 @api_view(['POST'])
 def registerUser(request):
@@ -51,6 +66,7 @@ def registerUser(request):
         else:
             message = {'detail': 'Error al crear el usuario'}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 @api_view(['PUT'])

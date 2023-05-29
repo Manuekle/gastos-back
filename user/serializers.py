@@ -2,6 +2,13 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 
+
+"""
+    Serializador de usuarios
+    - name: se define el nombre del usuario
+    - _id: se define el id del usuario
+    - isAdmin: se define si el usuario es administrador
+"""
 class UserSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
     _id = serializers.SerializerMethodField(read_only=True)
@@ -24,6 +31,11 @@ class UserSerializer(serializers.ModelSerializer):
 
         return name
 
+
+"""
+    Serializador de usuarios con token
+    - token: se define el token del usuario
+"""
 
 class UserSerializerWithToken(UserSerializer):
     token = serializers.SerializerMethodField(read_only=True)
