@@ -176,6 +176,7 @@ STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/images/'
 ```
 
+<<<<<<< HEAD
 ## API 🚀
 
 ### Endpoints 📋
@@ -200,6 +201,8 @@ MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/images/'
 | /api/category/:id | PUT | Actualiza una categoria por su id |
 | /api/category/:id | DELETE | Elimina una categoria por su id |
 
+=======
+>>>>>>> 5a1c6e084cfe1127c42d0ebd440c86f98ceeaed5
 ## Tecnlogias 🧰
 
 En este proyecto se usaron las siguientes tecnologias:
